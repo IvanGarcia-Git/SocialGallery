@@ -1,0 +1,6 @@
+body {
+  margin: 0px;
+  overflow-x: hidden;
+  background: url(img/home/fondo.png) no-repeat center;
+  transition: 0.4s;
+}

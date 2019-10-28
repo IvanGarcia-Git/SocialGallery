@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Home</title>
+	<title><?php echo "Sitio de ".$user;?></title>
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
 	<meta charset="utf-8">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -31,16 +31,10 @@
 	<div class="home">
 		<div class="header">
 			<div class="seccion1" style="width: 20%"><img src="img/home/logo.png"></div>
-			<div class="seccion2" style="width: 80%">
-				<?php
-					//Mantengo la sesión. Por ende puedo utilizar la variable $_SESSION anteriormente configurada
-					session_start();
-					if(isset($_SESSION['nombre'])){
-						echo "<a href='./login/services/logout.proc.php'>Cerrar sesión de ".$_SESSION['nombre']."</a>&nbsp;&nbsp;";
-					}else{
-						echo "<a href='./login/index.php'>¡Inicia sesión!</a>";
-					}
-				?>
+			<div class="seccion2" style="width: 80%; text-align: right;">
+					<?php
+						include "./header.php";
+					?>	
 			</div>
 		</div>
 
@@ -48,8 +42,8 @@
 
 		<div class="contenido">
 			<div class="particiones part1">
-				<h1 class="titulos">Galimg</h1>
-				<p class="textos">Bienvenido a Galimg, una galería de imagenes separadas por secciones. Elige la que más te guste!</p>
+				<h1 class="titulos">Bienvenido, <?php echo $_SESSION['nombre'];?></h1>
+				<p class="textos">¡Echa un vistazo a las imágenes que has subido!</p>
 			</div>	
 
 			<div class="particiones part2">
@@ -61,8 +55,18 @@
 
 	<!-- //////////SUBIR IMAGEN////////// -->
 
+	<?php
+	// include "./login/services/login.proc.php";
+	// include "./servicios/conexion.php";
+	// $consult="SELECT user.id_user FROM user WHERE user.nom_user LIKE ".$_SESSION['nombre'].";" ;
+	// $resultad=mysqli_query($conn,$consult);
+	// $muestra=mysqli_fetch_array($resultad);
+	$variableid = $_GET['variableid'];
+	?>
+
+
 	<div class="buscador">
-		<form method="post" enctype="multipart/form-data" action="./procesa.php">
+		<form method="post" enctype="multipart/form-data" action="./procesa.php?variableid=<?php echo $variableid; ?>">
 			<input type="text" name="titulo" size="35" style="width: 30%">
 			<input type="file" name="imagen" style="width: 30%" accept="image/gif,image/jpeg,image/png,image/jpg"> <!-- El accept restringe la subida de archivos (Parte 1 de la validacion) -->
 			<input type="submit" value="Enviar">
@@ -73,17 +77,23 @@
 
 	<!-- //////////CONTENIDO GALERIA JUEGOS////////// -->
 	<div class="fondogal">
-				
-		<div class="titulohome"><a id="gal_fin" name="gal_fin" class="gal_fin">Todas las imágenes</a></div>
-			
+
+	<div class="titulohome"><a id="gal_fin" name="gal_fin" class="gal_fin">Mis imágenes</a></div>
+
 		<h1 class="titulos"> <?php  ?></h1>
 		<div class="cont_gal">
 		
 		<?php
 			// Conexion a la base de datos
 			include "./servicios/conexion.php";
+			// include "./login/services/login.proc.php";
+			$variableid = $_GET['variableid'];
+			$usuar = $_SESSION['nombre'];
 			
-			$sql="SELECT imagen.nombre_img, imagen.link_img FROM imagen";
+			// $varid = mysqli_real_escape_string($conn,$variableid);
+
+
+			$sql="SELECT imagen.link_img FROM imagen WHERE imagen.id_user='$variableid';" ;
 			$res=mysqli_query($conn,$sql);
 
 		?>
@@ -91,11 +101,11 @@
 		<div class="divimagen">
 			<?php
 
-			while ($data=mysqli_fetch_array($res)) { 
+			while ($data=mysqli_fetch_array($res)) {
 			?>
 				<img <?php echo 'src='.$data['link_img'];?> style="width: 100%">
 			<?php
-			}
+			}	 
 			?>
 			</div>
 			

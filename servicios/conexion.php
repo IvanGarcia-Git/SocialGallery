@@ -1,6 +1,6 @@
 <?php
 
-$conn = mysqli_connect('localhost','root','','bd_galeria');
+$conn = mysqli_connect('localhost','root','','bd_gallery');
 
 // if(mysqli_connect_errno()){
 // 	die ("Error al conectarse con la base de datos: ").

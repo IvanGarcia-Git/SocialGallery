@@ -16,20 +16,20 @@ body {
 	height: 100vh;
 	// display: flex;
 	background-position: left;
-	background-attachment: fixed;	
+	// background-attachment: fixed;	
 	background-repeat: no-repeat;
 	
 		
 	@media (max-width: 1400px) {
 			background: url(../img/home/fondo.png);
 			background-position: left;
-			background-attachment: fixed;	
+			// background-attachment: fixed;	
 			background-repeat: no-repeat;
 	}
 	@media (min-width: 1401px) {
 			background: url(../img/home/fondo2.png);
 			background-position: left;
-			background-attachment: fixed;	
+			// background-attachment: fixed;	
 			background-repeat: no-repeat;
 	}
 }
@@ -46,11 +46,26 @@ body {
 	justify-content: center;
 	align-items: center;
 	margin-bottom: 3%;
-	.seccion {
+	.seccion1 {
 		display: flex;
 		flex-flow: row nowrap;
 		justify-content: center;
 		align-items: center;	
+	}
+	.seccion2 {
+		float: right;
+		text-align: right;
+		margin-right: 5%;
+		a {
+			text-decoration: none;
+			color: white;
+			font-family: "Raleway";
+			font-size: 1.4rem;
+			transition: 0.5s ease;
+		}
+		a:hover {
+			border-bottom: 2px solid;
+		}
 	}
 	img {
 		width: 50%;
@@ -113,9 +128,20 @@ body {
 
 /*--------------Galeria Home--------------*/
 
-.gal_fin {
-	opacity: 0!important;
+.titulohome {
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+	justify-content: center;
+	a {
+		font-family: 'Raleway';
+		font-size: 1.8rem;
+	}
 }
+
+// .gal_fin {
+	// opacity: 0!important;
+// }
 
 
 .categorias { /* DIV Padre */
@@ -144,7 +170,7 @@ body {
 .divimagen { /* Clase DIV para cada imagen*/
 	display: flex;
 	flex-flow: row wrap;
-	margin-bottom: 20%;
+	margin-bottom: 10%;
 	justify-content: center;
 	// align-items: center;
 }
@@ -157,6 +183,7 @@ body {
 	width: 46%;
 	border-radius: 10px;
 	transition: 0.4s;
+	object-fit: cover;
 }
 
 
