@@ -5,6 +5,8 @@
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
 	<meta charset="utf-8">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="codi.js"></script>
+
 </head>
 <body>
 
@@ -62,9 +64,10 @@
 	<!-- //////////SUBIR IMAGEN////////// -->
 
 	<div class="buscador">
-		<form method="post" enctype="multipart/form-data" action="./procesa.php">
-			<input type="text" name="titulo" size="35" style="width: 30%">
-			<input type="file" name="imagen" style="width: 30%" accept="image/gif,image/jpeg,image/png,image/jpg"> <!-- El accept restringe la subida de archivos (Parte 1 de la validacion) -->
+	<p class="mensaje" id="mensaje"></p>
+		<form method="post" enctype="multipart/form-data" action="./procesa.php" onsubmit="return subirimg()">
+			<input id="tituloimg" type="text" name="titulo" size="35" style="width: 30%">
+			<input id="linkimg" type="file" name="imagen" style="width: 30%" accept="image/gif,image/jpeg,image/png,image/jpg"> <!-- El accept restringe la subida de archivos (Parte 1 de la validacion) -->
 			<input type="submit" value="Enviar">
 		</form>
 	</div>

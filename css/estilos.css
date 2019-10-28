@@ -1,7 +1,7 @@
 body {
   margin: 0px;
   overflow-x: hidden;
-  background: url(img/home/fondo.png) no-repeat center;
+  background-color: #222222;
   transition: 0.4s;
 }
 @font-face {
@@ -11,6 +11,7 @@ body {
   src: local('Raleway'), local('Raleway-Regular'), url(https://fonts.gstatic.com/s/raleway/v14/1Ptug8zYS_SKggPNyC0ISg.ttf) format('truetype');
 }
 .home {
+  background: url(img/home/fondo.png) no-repeat center;
   height: 100vh;
   background-position: left;
   background-repeat: no-repeat;
